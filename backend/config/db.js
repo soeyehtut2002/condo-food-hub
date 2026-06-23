@@ -5,7 +5,7 @@ require('dotenv').config();
 // Use SQLite for easy local development (no PostgreSQL required)
 const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: path.join(__dirname, '..', 'database.sqlite'),
+  storage: process.env.SQLITE_DB_PATH || path.join(__dirname, '..', 'database.sqlite'),
   logging: process.env.NODE_ENV === 'development' ? false : false,
   define: {
     timestamps: true,

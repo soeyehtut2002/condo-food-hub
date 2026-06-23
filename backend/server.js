@@ -23,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Serve uploaded images
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/uploads', express.static(process.env.UPLOADS_DIR || path.join(__dirname, 'uploads')));
 
 // API Routes
 app.use('/api/auth', authRoutes);
@@ -37,6 +37,14 @@ app.use('/api/admin', adminRoutes);
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Condo Food Hub API is running' });
 });
+
+// Serve static assets in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend/dist/index.html'));
+  });
+}
 
 // Error handling middleware
 app.use((err, req, res, next) => {
