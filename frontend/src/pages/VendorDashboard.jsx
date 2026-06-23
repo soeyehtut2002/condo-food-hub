@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, DollarSign, Clock, Package, Plus, Pencil, Trash2, X, Truck } from 'lucide-react';
+import { ShoppingBag, DollarSign, Clock, Package, Plus, Pencil, Trash2, X, Truck, Store, Utensils } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { vendorAPI, productAPI, orderAPI } from '../services/api';
 import StatCard from '../components/StatCard';
@@ -114,7 +114,7 @@ export default function VendorDashboard() {
       <div className="page">
         <div className="container" style={{ maxWidth: '500px' }}>
           <div className="empty-state">
-            <div className="empty-state-icon">🏪</div>
+            <div className="empty-state-icon"><Store size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto 16px' }} /></div>
             <h3>Shop Not Set Up</h3>
             <p>Your vendor shop is pending approval or hasn't been created yet.</p>
           </div>
@@ -127,7 +127,7 @@ export default function VendorDashboard() {
     <div className="page" id="vendor-dashboard">
       <div className="container">
         <div className="page-header">
-          <h1>🏪 {vendor.shop_name}</h1>
+          <h1>{vendor.shop_name}</h1>
           <p>
             {vendor.is_approved ? (
               <span className="badge badge-open">✓ Approved</span>
@@ -155,11 +155,11 @@ export default function VendorDashboard() {
         <div className="tabs">
           <button className={`tab ${activeTab === 'orders' ? 'active' : ''}`}
             onClick={() => setActiveTab('orders')}>
-            📦 Orders ({orders.length})
+            Orders ({orders.length})
           </button>
           <button className={`tab ${activeTab === 'products' ? 'active' : ''}`}
             onClick={() => setActiveTab('products')}>
-            🍽️ Products ({products.length})
+            Products ({products.length})
           </button>
         </div>
 
@@ -168,7 +168,7 @@ export default function VendorDashboard() {
           <div>
             {orders.length === 0 ? (
               <div className="empty-state">
-                <div className="empty-state-icon">📦</div>
+                <div className="empty-state-icon"><ShoppingBag size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto 16px' }} /></div>
                 <h3>No orders yet</h3>
                 <p>Orders will appear here when residents place them</p>
               </div>
@@ -239,7 +239,7 @@ export default function VendorDashboard() {
 
             {products.length === 0 ? (
               <div className="empty-state">
-                <div className="empty-state-icon">🍽️</div>
+                <div className="empty-state-icon"><Utensils size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto 16px' }} /></div>
                 <h3>No products yet</h3>
                 <p>Add your first product to start receiving orders</p>
               </div>
@@ -274,7 +274,7 @@ export default function VendorDashboard() {
                         </td>
                         <td>{product.category}</td>
                         <td className="price">฿{parseFloat(product.price).toFixed(0)}</td>
-                        <td>{product.is_popular ? '🔥' : '—'}</td>
+                        <td>{product.is_popular ? 'Yes' : '—'}</td>
                         <td>
                           <div style={{ display: 'flex', gap: '8px' }}>
                             <button className="btn btn-outline btn-sm" onClick={() => openEditModal(product)}>
@@ -343,7 +343,7 @@ export default function VendorDashboard() {
                   <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer', fontSize: '14px' }}>
                     <input type="checkbox" checked={productForm.is_popular}
                       onChange={(e) => setProductForm({ ...productForm, is_popular: e.target.checked })} />
-                    Mark as Popular 🔥
+                    Mark as Popular
                   </label>
                 </div>
                 <div className="modal-footer">

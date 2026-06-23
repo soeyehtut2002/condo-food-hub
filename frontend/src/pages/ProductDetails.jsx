@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ShoppingCart, Minus, Plus, ArrowLeft, Star, Store } from 'lucide-react';
+import { ShoppingCart, Minus, Plus, ArrowLeft, Star, Store, AlertCircle } from 'lucide-react';
 import { productAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
@@ -49,7 +49,7 @@ export default function ProductDetails() {
   if (!product) return (
     <div className="page"><div className="container">
       <div className="empty-state">
-        <div className="empty-state-icon">😕</div>
+        <div className="empty-state-icon"><AlertCircle size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto 16px' }} /></div>
         <h3>Product not found</h3>
         <Link to="/vendors" className="btn btn-primary">Browse Vendors</Link>
       </div>
@@ -90,7 +90,7 @@ export default function ProductDetails() {
                 borderRadius: 'var(--radius-full)', fontSize: '13px', fontWeight: 600,
                 marginBottom: '12px',
               }}>
-                🔥 Popular
+                Popular
               </span>
             )}
 
@@ -155,7 +155,7 @@ export default function ProductDetails() {
                   id="add-to-cart-btn"
                 >
                   {added ? (
-                    '✓ Added to Cart!'
+                    'Added to Cart!'
                   ) : (
                     <>
                       <ShoppingCart size={18} />

@@ -41,9 +41,9 @@ export default function VendorDirectory() {
 
   const categories = [
     { value: '', label: 'All' },
-    { value: 'food', label: '🍽️ Food' },
-    { value: 'drink', label: '☕ Drinks' },
-    { value: 'service', label: '🔧 Services' },
+    { value: 'food', label: 'Food' },
+    { value: 'drink', label: 'Drinks' },
+    { value: 'service', label: 'Services' },
   ];
 
   return (
@@ -100,7 +100,7 @@ export default function VendorDirectory() {
           </div>
         ) : (
           <div className="empty-state">
-            <div className="empty-state-icon">🔍</div>
+            <div className="empty-state-icon"><Search size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto 16px' }} /></div>
             <h3>No vendors found</h3>
             <p>Try a different search or category</p>
           </div>

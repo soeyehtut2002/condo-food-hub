@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { MapPin, FileText, CheckCircle } from 'lucide-react';
+import { MapPin, FileText, CheckCircle, ShoppingCart, Store } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import { orderAPI } from '../services/api';
@@ -48,7 +48,7 @@ export default function CheckoutPage() {
           }}>
             <CheckCircle size={48} />
           </div>
-          <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '8px' }}>Order Placed! 🎉</h1>
+          <h1 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '8px' }}>Order Placed!</h1>
           <p style={{ color: 'var(--text-secondary)', marginBottom: '8px', fontSize: '16px' }}>
             Your order has been sent to the vendor
           </p>
@@ -70,7 +70,7 @@ export default function CheckoutPage() {
       <div className="page">
         <div className="container" style={{ maxWidth: '500px' }}>
           <div className="empty-state">
-            <div className="empty-state-icon">🛒</div>
+            <div className="empty-state-icon"><ShoppingCart size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto 16px' }} /></div>
             <h3>Cart is empty</h3>
             <p>Add items before checking out</p>
             <Link to="/vendors" className="btn btn-primary">Browse Vendors</Link>
@@ -111,7 +111,7 @@ export default function CheckoutPage() {
           <div className="card" key={vendorName} style={{ marginBottom: '16px' }}>
             <div className="card-body">
               <h3 style={{ fontSize: '15px', fontWeight: 600, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                🏪 {vendorName}
+                <Store size={18} style={{ color: 'var(--primary)' }} /> {vendorName}
               </h3>
               {items.map(item => (
                 <div key={item.id} style={{

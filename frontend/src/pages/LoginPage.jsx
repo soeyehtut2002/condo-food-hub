@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { LogIn, Mail, Lock, Eye, EyeOff } from 'lucide-react';
+import { LogIn, Mail, Lock, Eye, EyeOff, Building } from 'lucide-react';
 import './AuthPages.css';
 
 export default function LoginPage() {
@@ -34,7 +34,7 @@ export default function LoginPage() {
       <div className="auth-container">
         <div className="auth-card">
           <div className="auth-header">
-            <div className="auth-logo">🏢</div>
+            <div className="auth-logo"><Building size={40} /></div>
             <h1>Welcome back</h1>
             <p>Sign in to your Condo Food Hub account</p>
           </div>
@@ -101,13 +101,13 @@ export default function LoginPage() {
             <p className="demo-title">Demo Accounts</p>
             <div className="demo-accounts">
               <button onClick={() => setForm({ email: 'sarah@resident.com', password: 'password123' })}>
-                👤 Resident
+                Resident
               </button>
               <button onClick={() => setForm({ email: 'arun@vendor.com', password: 'password123' })}>
-                🏪 Vendor
+                Vendor
               </button>
               <button onClick={() => setForm({ email: 'admin@condofoodhub.com', password: 'password123' })}>
-                🛡️ Admin
+                Admin
               </button>
             </div>
           </div>

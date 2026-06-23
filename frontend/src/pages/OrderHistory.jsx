@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Package, CheckCircle, XCircle, ChevronDown, ChevronUp, Store, Truck } from 'lucide-react';
+import { Clock, Package, CheckCircle, XCircle, ChevronDown, ChevronUp, Store, Truck, ShoppingBag } from 'lucide-react';
 import { orderAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
@@ -71,7 +71,7 @@ export default function OrderHistory() {
           <div className="spinner" />
         ) : orders.length === 0 ? (
           <div className="empty-state">
-            <div className="empty-state-icon">📦</div>
+            <div className="empty-state-icon"><ShoppingBag size={48} style={{ color: 'var(--text-tertiary)', margin: '0 auto 16px' }} /></div>
             <h3>No orders found</h3>
             <p>{statusFilter ? 'No orders with this status' : 'You haven\'t placed any orders yet'}</p>
             {user?.role === 'resident' && (

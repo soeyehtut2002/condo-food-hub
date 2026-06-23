@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
 import {
   Home, ShoppingCart, User, LogOut, Store, ClipboardList,
-  Menu, X, ChevronDown, Shield, Search
+  Menu, X, ChevronDown, Shield, Search, Building
 } from 'lucide-react';
 import './Navbar.css';
 
@@ -27,7 +27,7 @@ export default function Navbar() {
       <div className="navbar-inner container">
         {/* Logo */}
         <Link to="/" className="navbar-logo" id="navbar-logo">
-          <span className="logo-icon">🏢</span>
+          <span className="logo-icon"><Building size={20} /></span>
           <span className="logo-text">
             Condo<span className="logo-accent">FoodHub</span>
           </span>

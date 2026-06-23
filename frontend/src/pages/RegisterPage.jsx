@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { UserPlus, Mail, Lock, User, Phone, Home, Store } from 'lucide-react';
+import { UserPlus, Mail, Lock, User, Phone, Home, Store, Building } from 'lucide-react';
 import './AuthPages.css';
 
 export default function RegisterPage() {
@@ -45,7 +45,7 @@ export default function RegisterPage() {
       <div className="auth-container">
         <div className="auth-card">
           <div className="auth-header">
-            <div className="auth-logo">🏢</div>
+            <div className="auth-logo"><Building size={40} /></div>
             <h1>Create Account</h1>
             <p>Join Condo Food Hub today</p>
           </div>

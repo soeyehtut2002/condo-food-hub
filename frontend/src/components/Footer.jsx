@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Phone, Mail } from 'lucide-react';
+import { MapPin, Phone, Mail, Building } from 'lucide-react';
 import './Footer.css';
 
 export default function Footer() {
@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="footer-grid">
           <div className="footer-brand">
             <div className="footer-logo">
-              <span className="logo-icon">🏢</span>
+              <span className="logo-icon"><Building size={20} /></span>
               <span className="logo-text">
                 Condo<span className="logo-accent">FoodHub</span>
               </span>
@@ -29,9 +29,9 @@ export default function Footer() {
 
           <div className="footer-links">
             <h4>Categories</h4>
-            <Link to="/vendors?category=food">🍜 Thai Food</Link>
-            <Link to="/vendors?category=drink">☕ Coffee & Drinks</Link>
-            <Link to="/vendors?category=service">🧹 Services</Link>
+            <Link to="/vendors?category=food">Thai Food</Link>
+            <Link to="/vendors?category=drink">Coffee & Drinks</Link>
+            <Link to="/vendors?category=service">Services</Link>
           </div>
 
           <div className="footer-contact">

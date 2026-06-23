@@ -78,7 +78,7 @@ export default function AdminDashboard() {
     <div className="page" id="admin-dashboard">
       <div className="container">
         <div className="page-header">
-          <h1>🛡️ Admin Dashboard</h1>
+          <h1>Admin Dashboard</h1>
           <p>Manage your Condo Food Hub platform</p>
         </div>
 
@@ -110,7 +110,7 @@ export default function AdminDashboard() {
               {/* Order Status Breakdown */}
               <div className="card">
                 <div className="card-body">
-                  <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px' }}>📊 Order Status</h3>
+                  <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px' }}>Order Status</h3>
                   {[
                     { label: 'Pending', value: stats.pendingOrders, color: 'var(--warning)', icon: <Clock size={16} /> },
                     { label: 'Preparing', value: stats.preparingOrders, color: 'var(--info)', icon: <ShoppingBag size={16} /> },
@@ -134,7 +134,7 @@ export default function AdminDashboard() {
               {/* Quick Stats */}
               <div className="card">
                 <div className="card-body">
-                  <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px' }}>📈 Quick Stats</h3>
+                  <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px' }}>Quick Stats</h3>
                   {[
                     { label: 'Approved Vendors', value: stats.approvedVendors },
                     { label: 'Pending Vendors', value: stats.pendingVendors },
@@ -288,7 +288,7 @@ export default function AdminDashboard() {
                     <td style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>{p.vendor?.shop_name}</td>
                     <td>{p.category}</td>
                     <td className="price">฿{parseFloat(p.price).toFixed(0)}</td>
-                    <td>{p.is_popular ? '🔥' : '—'}</td>
+                    <td>{p.is_popular ? 'Yes' : '—'}</td>
                     <td>
                       <button className="btn btn-sm" style={{ color: 'var(--error)' }}
                         onClick={() => handleDeleteProduct(p.id)}>

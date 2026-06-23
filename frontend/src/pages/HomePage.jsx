@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ArrowRight, TrendingUp, Store, ShoppingBag, Star } from 'lucide-react';
+import { Search, ArrowRight, Store, ShoppingBag, Star, Building, Soup, Coffee, Utensils } from 'lucide-react';
 import { vendorAPI, productAPI } from '../services/api';
 import VendorCard from '../components/VendorCard';
 import ProductCard from '../components/ProductCard';
@@ -39,12 +39,12 @@ export default function HomePage() {
   };
 
   const categories = [
-    { name: 'Thai Food', icon: '🍜', type: 'food' },
-    { name: 'Korean Food', icon: '🥘', type: 'food' },
-    { name: 'Home Cooking', icon: '🍳', type: 'food' },
-    { name: 'Coffee', icon: '☕', type: 'drink' },
-    { name: 'Juices', icon: '🥤', type: 'drink' },
-    { name: 'Desserts', icon: '🍰', type: 'food' },
+    { name: 'Thai Food', icon: <Soup size={24} />, type: 'food' },
+    { name: 'Korean Food', icon: <Utensils size={24} />, type: 'food' },
+    { name: 'Home Cooking', icon: <Utensils size={24} />, type: 'food' },
+    { name: 'Coffee', icon: <Coffee size={24} />, type: 'drink' },
+    { name: 'Juices', icon: <Coffee size={24} />, type: 'drink' },
+    { name: 'Desserts', icon: <Soup size={24} />, type: 'food' },
   ];
 
   return (
@@ -54,7 +54,7 @@ export default function HomePage() {
         <div className="hero-bg" />
         <div className="container hero-content">
           <div className="hero-text">
-            <span className="hero-badge">🏢 Your Building Marketplace</span>
+            <span className="hero-badge">Your Building Marketplace</span>
             <h1>
               Delicious food,<br />
               delivered to your <span className="hero-accent">room</span>
@@ -93,10 +93,10 @@ export default function HomePage() {
 
           <div className="hero-visual">
             <div className="hero-food-grid">
-              <div className="hero-food-item">🍜</div>
-              <div className="hero-food-item">☕</div>
-              <div className="hero-food-item">🥘</div>
-              <div className="hero-food-item">🥤</div>
+              <div className="hero-food-item"><Soup size={32} style={{ color: 'var(--primary)' }} /></div>
+              <div className="hero-food-item"><Coffee size={32} style={{ color: 'var(--primary)' }} /></div>
+              <div className="hero-food-item"><Utensils size={32} style={{ color: 'var(--primary)' }} /></div>
+              <div className="hero-food-item"><Store size={32} style={{ color: 'var(--primary)' }} /></div>
             </div>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function HomePage() {
                 key={cat.name}
                 className="category-card"
               >
-                <span className="category-icon">{cat.icon}</span>
+                <span className="category-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>{cat.icon}</span>
                 <span className="category-name">{cat.name}</span>
               </Link>
             ))}
@@ -127,7 +127,7 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2>🌟 Featured Vendors</h2>
+            <h2>Featured Vendors</h2>
             <Link to="/vendors" className="see-all">
               See All <ArrowRight size={16} />
             </Link>
@@ -142,7 +142,7 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="empty-state">
-              <div className="empty-state-icon">🏪</div>
+              <div className="empty-state-icon"><Store size={48} style={{ color: 'var(--text-tertiary)' }} /></div>
               <h3>No vendors yet</h3>
               <p>Check back soon for new vendors!</p>
             </div>
@@ -154,7 +154,7 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <h2>🔥 Popular Right Now</h2>
+            <h2>Popular Right Now</h2>
             <Link to="/vendors" className="see-all">
               View Menu <ArrowRight size={16} />
             </Link>
@@ -169,7 +169,7 @@ export default function HomePage() {
             </div>
           ) : (
             <div className="empty-state">
-              <div className="empty-state-icon">🍽️</div>
+              <div className="empty-state-icon"><Utensils size={48} style={{ color: 'var(--text-tertiary)' }} /></div>
               <h3>No items yet</h3>
               <p>Vendors are setting up their menus!</p>
             </div>
@@ -186,19 +186,19 @@ export default function HomePage() {
           <div className="steps-grid">
             <div className="step-card">
               <div className="step-number">1</div>
-              <div className="step-icon">🔍</div>
+              <div className="step-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}><Search size={32} /></div>
               <h3>Browse</h3>
               <p>Explore vendors and menus in your building</p>
             </div>
             <div className="step-card">
               <div className="step-number">2</div>
-              <div className="step-icon">🛒</div>
+              <div className="step-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}><ShoppingBag size={32} /></div>
               <h3>Order</h3>
               <p>Add items to your cart and checkout</p>
             </div>
             <div className="step-card">
               <div className="step-number">3</div>
-              <div className="step-icon">🚪</div>
+              <div className="step-icon" style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}><Building size={32} /></div>
               <h3>Receive</h3>
               <p>Get it delivered right to your room</p>
             </div>

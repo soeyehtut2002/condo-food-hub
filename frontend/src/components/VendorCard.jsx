@@ -6,12 +6,6 @@ export default function VendorCard({ vendor }) {
     ? `/uploads/${vendor.logo}`
     : `https://placehold.co/120x120/E6F9EF/00B14F?text=${encodeURIComponent(vendor.shop_name?.charAt(0) || 'V')}`;
 
-  const categoryEmoji = {
-    food: '🍽️',
-    drink: '☕',
-    service: '🔧',
-  };
-
   return (
     <Link to={`/vendors/${vendor.id}`} className="vendor-card animate-in" id={`vendor-${vendor.id}`}>
       <div className="vendor-card-banner">
@@ -28,7 +22,7 @@ export default function VendorCard({ vendor }) {
       <div className="vendor-card-body">
         <h3 className="vendor-card-name">{vendor.shop_name}</h3>
         <p className="vendor-card-category">
-          {categoryEmoji[vendor.category] || '🍽️'} {vendor.category}
+          {vendor.category}
         </p>
         {vendor.description && (
           <p className="vendor-card-desc">{vendor.description}</p>
