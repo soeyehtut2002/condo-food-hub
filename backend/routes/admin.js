@@ -28,6 +28,7 @@ router.get('/stats', async (req, res) => {
     // Orders by status
     const pendingOrders = await Order.count({ where: { status: 'pending' } });
     const preparingOrders = await Order.count({ where: { status: 'preparing' } });
+    const onTheWayOrders = await Order.count({ where: { status: 'on_the_way' } });
     const deliveredOrders = await Order.count({ where: { status: 'delivered' } });
     const cancelledOrders = await Order.count({ where: { status: 'cancelled' } });
 
@@ -50,6 +51,7 @@ router.get('/stats', async (req, res) => {
         totalRevenue,
         pendingOrders,
         preparingOrders,
+        onTheWayOrders,
         deliveredOrders,
         cancelledOrders,
         recentOrders,

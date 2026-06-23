@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Users, Store, ShoppingBag, DollarSign, Clock, CheckCircle, XCircle, Trash2 } from 'lucide-react';
+import { Users, Store, ShoppingBag, DollarSign, Clock, CheckCircle, XCircle, Trash2, Truck } from 'lucide-react';
 import { adminAPI } from '../services/api';
 import StatCard from '../components/StatCard';
 
@@ -114,6 +114,7 @@ export default function AdminDashboard() {
                   {[
                     { label: 'Pending', value: stats.pendingOrders, color: 'var(--warning)', icon: <Clock size={16} /> },
                     { label: 'Preparing', value: stats.preparingOrders, color: 'var(--info)', icon: <ShoppingBag size={16} /> },
+                    { label: 'On The Way', value: stats.onTheWayOrders, color: 'var(--primary)', icon: <Truck size={16} /> },
                     { label: 'Delivered', value: stats.deliveredOrders, color: 'var(--success)', icon: <CheckCircle size={16} /> },
                     { label: 'Cancelled', value: stats.cancelledOrders, color: 'var(--error)', icon: <XCircle size={16} /> },
                   ].map((item) => (

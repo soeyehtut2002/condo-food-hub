@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ShoppingBag, DollarSign, Clock, Package, Plus, Pencil, Trash2, X } from 'lucide-react';
+import { ShoppingBag, DollarSign, Clock, Package, Plus, Pencil, Trash2, X, Truck } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { vendorAPI, productAPI, orderAPI } from '../services/api';
 import StatCard from '../components/StatCard';
@@ -48,6 +48,7 @@ export default function VendorDashboard() {
 
   const pendingOrders = orders.filter(o => o.status === 'pending').length;
   const preparingOrders = orders.filter(o => o.status === 'preparing').length;
+  const onTheWayOrders = orders.filter(o => o.status === 'on_the_way').length;
   const totalRevenue = orders.filter(o => o.status === 'delivered')
     .reduce((sum, o) => sum + parseFloat(o.total), 0);
 
@@ -144,6 +145,8 @@ export default function VendorDashboard() {
             color="var(--warning)" bgColor="var(--warning-bg)" />
           <StatCard icon={<Package size={22} />} label="Preparing" value={preparingOrders}
             color="var(--info)" bgColor="var(--info-bg)" />
+          <StatCard icon={<Truck size={22} />} label="On The Way" value={onTheWayOrders}
+            color="var(--primary)" bgColor="var(--primary-light)" />
           <StatCard icon={<DollarSign size={22} />} label="Revenue" value={`฿${totalRevenue.toFixed(0)}`}
             color="var(--success)" bgColor="var(--success-bg)" />
         </div>
@@ -200,6 +203,12 @@ export default function VendorDashboard() {
                             </button>
                           )}
                           {order.status === 'preparing' && (
+                            <button className="btn btn-primary btn-sm"
+                              onClick={() => handleStatusUpdate(order.id, 'on_the_way')}>
+                              Ship
+                            </button>
+                          )}
+                          {order.status === 'on_the_way' && (
                             <button className="btn btn-primary btn-sm"
                               onClick={() => handleStatusUpdate(order.id, 'delivered')}>
                               Deliver

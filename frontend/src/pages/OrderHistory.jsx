@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Clock, Package, CheckCircle, XCircle, ChevronDown, ChevronUp, Store } from 'lucide-react';
+import { Clock, Package, CheckCircle, XCircle, ChevronDown, ChevronUp, Store, Truck } from 'lucide-react';
 import { orderAPI } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 
@@ -32,6 +32,7 @@ export default function OrderHistory() {
   const statusIcon = {
     pending: <Clock size={16} />,
     preparing: <Package size={16} />,
+    on_the_way: <Truck size={16} />,
     delivered: <CheckCircle size={16} />,
     cancelled: <XCircle size={16} />,
   };
@@ -40,6 +41,7 @@ export default function OrderHistory() {
     { value: '', label: 'All Orders' },
     { value: 'pending', label: 'Pending' },
     { value: 'preparing', label: 'Preparing' },
+    { value: 'on_the_way', label: 'On The Way' },
     { value: 'delivered', label: 'Delivered' },
     { value: 'cancelled', label: 'Cancelled' },
   ];
@@ -158,6 +160,16 @@ export default function OrderHistory() {
                             </button>
                           )}
                           {order.status === 'preparing' && (
+                            <button className="btn btn-primary btn-sm"
+                              onClick={async (e) => {
+                                e.stopPropagation();
+                                await orderAPI.updateStatus(order.id, { status: 'on_the_way' });
+                                loadOrders();
+                              }}>
+                              Ship Order
+                            </button>
+                          )}
+                          {order.status === 'on_the_way' && (
                             <button className="btn btn-primary btn-sm"
                               onClick={async (e) => {
                                 e.stopPropagation();

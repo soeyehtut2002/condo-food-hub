@@ -395,6 +395,11 @@ select.form-input {
   color: var(--info);
 }
 
+.badge-on_the_way {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
 .badge-delivered {
   background: var(--success-bg);
   color: var(--success);
